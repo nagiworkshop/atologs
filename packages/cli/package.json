@@ -1,0 +1,58 @@
+{
+  "name": "ccclub",
+  "version": "0.3.15",
+  "type": "module",
+  "description": "Claude Code and Codex leaderboard among friends for coding agent tokens and costs",
+  "bin": {
+    "ccclub": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "scripts"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "prepublishOnly": "npm run build",
+    "postinstall": "node scripts/postinstall.cjs",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "cli-table3": "^0.6.5",
+    "commander": "^12.1.0",
+    "glob": "^11.0.0",
+    "ora": "^8.1.0"
+  },
+  "devDependencies": {
+    "@ccclub/shared": "workspace:*",
+    "@types/node": "^22.0.0",
+    "tsup": "^8.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.0.18"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "claude-code-leaderboard",
+    "codex",
+    "codex-leaderboard",
+    "opencode",
+    "amp",
+    "coding-agent",
+    "ai-coding-agent",
+    "token-usage",
+    "usage-tracker",
+    "cost-tracking",
+    "usage",
+    "ranking",
+    "leaderboard"
+  ],
+  "license": "MIT",
+  "homepage": "https://ccclub.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mazzzystar/ccclub.git"
+  }
+}

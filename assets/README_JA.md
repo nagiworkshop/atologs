@@ -1,0 +1,99 @@
+[English](../README.md) | [中文](./README_CN.md) | [한국어](./README_KO.md) | [Deutsch](./README_DE.md) | [Français](./README_FR.md) | [Español](./README_ES.md)
+
+# AtoLogs
+
+> [mazzzystar/ccclub](https://github.com/mazzzystar/ccclub) からのフォーク（MIT ライセンス）· atologs.com 向けにメッセージ審査、管理者認証、ブランディング機能を追加カスタマイズ。
+
+Claude Code の仲間うちリーダーボード。
+
+<img src="./demo.png" alt="AtoLogs" width="80%" />
+
+## はじめに
+
+```bash
+npx ccclub init
+```
+
+名前を入力すると、6文字の招待コードが発行されます。友達に共有しましょう:
+
+```bash
+npx ccclub join YHAW6P
+```
+
+以上です。使用量は Claude Code hook で自動同期されます。設定不要、登録不要、アカウント不要。
+
+友達が参加したら、リーダーボードを確認：
+
+```bash
+ccclub
+```
+
+## アップロードされるデータ
+
+AtoLogs は Claude Code がローカルに書き出す JSONL ログを読み取り、30分ごとの要約（トークン数 + コスト）にまとめてアップロードします。**プロンプト、コード、ファイルパス、プロジェクト名は一切含まれません** — カウンターのみです。`ccclub show-data` で送信内容を確認できます。
+
+## コマンド
+
+日常使いはこの4つだけ:
+
+```bash
+ccclub init                        # 初回セットアップ、グループ作成
+ccclub join <CODE>                 # 友達のグループに参加
+ccclub sync                        # 手動同期（セッション終了時にも自動実行）
+ccclub                             # リーダーボードを表示
+```
+
+追加オプション:
+
+```bash
+ccclub -d 1                        # 期間選択: 1 / 7 / 30 / all
+ccclub --global                    # 公開ユーザー全員
+ccclub -g YHAW6P                   # 特定のグループ
+```
+
+その他:
+
+```bash
+ccclub create                      # 別のグループを作成
+ccclub profile                     # プロフィールを表示
+ccclub profile --name "新しい名前"  # 表示名を変更
+ccclub profile --avatar "URL"      # カスタムアバター
+ccclub profile --public            # グローバルランキングに表示
+ccclub profile --private           # グローバルランキングから非表示（デフォルト）
+ccclub show-data                   # アップロード内容を確認
+```
+
+## Webダッシュボード
+
+各グループにライブページがあります:
+
+```
+https://atologs.com/g/YHAW6P
+```
+
+期間切替（today/7d/30d/all time）、アバター、5分ごとの自動更新。公開ユーザーのグローバルページは `/g/global` にあります。
+
+## プライバシー
+
+アップロードされるのは**これだけ**:
+
+```json
+{
+  "blockStart": "2025-02-13T00:00:00Z",
+  "blockEnd": "2025-02-13T00:30:00Z",
+  "inputTokens": 48210,
+  "outputTokens": 12050,
+  "cacheCreationTokens": 0,
+  "cacheReadTokens": 31200,
+  "totalTokens": 91460,
+  "costUSD": 0.2184,
+  "models": ["claude-sonnet-4-5-20250929"],
+  "entryCount": 23
+}
+```
+
+**デフォルトは非公開** — 参加したグループ内でのみ表示されます。グローバルランキングはオプトイン（`ccclub profile --public`）です。
+
+## ライセンス
+
+MIT

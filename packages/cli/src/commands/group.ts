@@ -1,0 +1,59 @@
+import { createInterface } from "node:readline/promises";
+import { stdin, stdout } from "node:process";
+import chalk from "chalk";
+import ora from "ora";
+import { requireConfig, saveConfig } from "../config.js";
+import { formatFetchError } from "../fetch-error.js";
+import { theme } from "../theme.js";
+export async function createGroupCommand(): Promise<void> {
+  const config = await requireConfig();
+  const rl = createInterface({ input: stdin, output: stdout });
+
+  try {
+    const name = await rl.question(chalk.bold("グループ名: "));
+    if (!name.trim()) {
+      console.error(chalk.red("グループ名は空にできません。"));
+      return;
+    }
+
+    const spinner = ora("グループを作成中...").start();
+
+    let res: Response;
+    try {
+      res = await fetch(`${config.apiUrl}/api/group/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${config.token}`,
+        },
+        body: JSON.stringify({ name: name.trim() }),
+        signal: AbortSignal.timeout(15_000),
+      });
+    } catch (err) {
+      spinner.fail(`失敗しました: ${formatFetchError(err)}`);
+      return;
+    }
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ error: res.statusText }));
+      spinner.fail(`失敗しました: ${(err as { error: string }).error}`);
+      return;
+    }
+
+    const data = (await res.json()) as { groupCode: string; groupName: string };
+
+    // Save new group to config
+    if (!config.groups.includes(data.groupCode)) {
+      config.groups.push(data.groupCode);
+      await saveConfig(config);
+    }
+
+    spinner.succeed(`グループ「${data.groupName}」を作成しました！`);
+    console.log("");
+    console.log(`    ${theme.link(`${config.apiUrl}/invite/${data.groupCode}`)}`);
+    console.log("");
+    console.log(chalk.dim(`    または: npx ccclub join ${data.groupCode}`));
+  } finally {
+    rl.close();
+  }
+}

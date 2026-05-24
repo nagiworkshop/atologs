@@ -1,0 +1,135 @@
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import type { Env } from "./types.js";
+import { authRoutes } from "./routes/auth.js";
+import { syncRoutes } from "./routes/sync.js";
+import { rankRoutes } from "./routes/rankings.js";
+import { usageRoute } from "./routes/usage.js";
+import { dashboardRoute } from "./dashboard.js";
+import { landingRoute } from "./landing.js";
+import { sampleRoute } from "./sample.js";
+import { inviteRoute } from "./invite.js";
+import { guideRoute } from "./guide.js";
+import { guidePage } from "./guide_page.js";
+import { feedbackPages } from "./routes/feedback_pages.js";
+
+
+const app = new Hono<{ Bindings: Env }>();
+
+// E6: Add global security headers middleware
+app.use("*", async (c, next) => {
+  await next();
+  c.header("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+  c.header("Content-Security-Policy", "default-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:; connect-src 'self' https:; frame-ancestors 'none';");
+  c.header("X-Frame-Options", "DENY");
+  c.header("X-Content-Type-Options", "nosniff");
+  c.header("Referrer-Policy", "strict-origin-when-cross-origin");
+  c.header("Permissions-Policy", "geolocation=(), microphone=(), camera=(), interest-cohort=()");
+});
+
+// E5: Validate API routes before CORS matching
+const allowedPrefixes = [
+  "/api/health",
+  "/api/version",
+  "/api/init",
+  "/api/join",
+  "/api/leave",
+  "/api/sync",
+  "/api/usage",
+  "/api/profile",
+  "/api/group",
+  "/api/rank",
+  "/api/activity",
+  "/api/messages",
+  "/api/admin/messages"
+];
+
+app.use("/api/*", async (c, next) => {
+  const path = c.req.path;
+  const isAllowed = allowedPrefixes.some(prefix => path === prefix || path.startsWith(prefix + "/"));
+  if (!isAllowed) {
+    return c.json({ error: "Not Found" }, 404);
+  }
+  await next();
+});
+
+// E9: Tighten CORS settings
+app.use("/api/*", cors({
+  origin: (origin) => {
+    if (!origin) return "https://atologs.com";
+    try {
+      const url = new URL(origin);
+      const hostname = url.hostname;
+      if (
+        hostname === "atologs.com" ||
+        hostname === "localhost" ||
+        hostname === "127.0.0.1" ||
+        hostname.endsWith(".atologs.com")
+      ) {
+        return origin;
+      }
+    } catch {
+      // ignore invalid URLs
+    }
+    return "https://atologs.com";
+  },
+  allowMethods: ["GET", "POST", "OPTIONS"],
+}));
+
+app.use("/api/*", async (c, next) => {
+  c.header("Cache-Control", "no-cache, no-store, must-revalidate");
+  await next();
+});
+
+
+// E7: Static SEO and Favicon endpoints
+app.get("/robots.txt", (c) => {
+  c.header("Content-Type", "text/plain");
+  return c.text("User-agent: *\nAllow: /\n\nSitemap: https://atologs.com/sitemap.xml");
+});
+
+app.get("/sitemap.xml", (c) => {
+  return c.text(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://atologs.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://atologs.com/g/global</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>`, 200, { "Content-Type": "application/xml; charset=utf-8" });
+});
+
+const FAVICON_BASE64 = "AAABAAEAEBAAAAEAIABoQgAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//";
+
+app.get("/favicon.ico", (c) => {
+  const binary = Uint8Array.from(atob(FAVICON_BASE64), char => char.charCodeAt(0));
+  c.header("Content-Type", "image/x-icon");
+  c.header("Cache-Control", "public, max-age=86400");
+  return c.body(binary);
+});
+
+// E11: Version API endpoint
+app.get("/api/version", (c) => {
+  return c.json({ version: "1.0.0", cli: "0.3.15" });
+});
+
+app.get("/api/health", (c) => c.json({ status: "ok" }));
+
+app.route("/api", authRoutes);
+app.route("/api", syncRoutes);
+app.route("/api", rankRoutes);
+app.post("/api/usage", usageRoute);
+app.route("/", landingRoute);
+app.route("/", sampleRoute);
+app.route("/", guideRoute);
+app.route("/", guidePage);
+app.route("/", inviteRoute);
+app.route("/", feedbackPages);
+app.route("/", dashboardRoute);
+
+export default app;
