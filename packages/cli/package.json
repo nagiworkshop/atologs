@@ -50,9 +50,9 @@
     "leaderboard"
   ],
   "license": "MIT",
-  "homepage": "https://ccclub.dev",
+  "homepage": "https://atologs.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mazzzystar/ccclub.git"
+    "url": "git+https://github.com/nagiworkshop/atologs.git"
   }
 }

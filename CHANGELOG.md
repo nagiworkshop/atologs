@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.0.7] - 2026-05-26
+
+### Fixed
+- Repo package.json name corrected from atolog_cc to atologs (matches public repo identity).
+- CLI package.json homepage and repository URL now point to atologs.com and nagiworkshop/atologs.
+
 ## [v1.0.6] - 2026-05-26
 
 ### Fixed
