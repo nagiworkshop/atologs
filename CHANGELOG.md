@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.0.4] - 2026-05-26
+
+### Added
+- Google Analytics 4 tracking with the project owners own measurement ID. Site-wide coverage via base layout.
+
 ## [v1.0.2] - 2026-05-26
 
 ### Added
