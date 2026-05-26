@@ -418,7 +418,7 @@ function landingHTML(origin: string) {
       <div style="margin-top: 1rem; font-size: 0.875rem; color: ${colors.textSecondary}; background-color: ${colors.bgWhite}; padding: 1rem; border-radius: 0.5rem; border: 1px solid rgba(229, 229, 224, 0.8);">
         AtoLogs のソースコードは GitHub で公开されています。<br>
         私たちの言葉ではなく、コードそのものを読んでご判断ください。<br>
-        <a href="https://github.com/nagiworkshop/atolog_cc" target="_blank" rel="noopener noreferrer" class="privacy-link" style="font-weight: 500; margin-top: 0.25rem; display: inline-block;">→  https://github.com/nagiworkshop/atolog_cc</a>
+        <a href="https://github.com/nagiworkshop/atologs" target="_blank" rel="noopener noreferrer" class="privacy-link" style="font-weight: 500; margin-top: 0.25rem; display: inline-block;">→  https://github.com/nagiworkshop/atologs</a>
       </div>
     </div>
   </section>
@@ -529,6 +529,12 @@ function landingHTML(origin: string) {
         setTimeout(function() {
           copyFeedback.style.opacity = '0';
         }, 1800);
+        if (typeof gtag === 'function') {
+          gtag('event', 'install_command_copy', {
+            mode: currentMode,
+            location: 'landing_hero'
+          });
+        }
       });
     });
 

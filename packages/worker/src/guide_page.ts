@@ -599,7 +599,7 @@ function guideHTML(origin: string) {
           <div style="margin-top: 1rem; margin-bottom: 1rem; font-size: 0.875rem; color: ${colors.textSecondary}; background-color: rgba(245, 245, 245, 0.5); padding: 1rem; border-radius: 0.5rem; border: 1px solid ${colors.border};">
             AtoLogs のソースコードは GitHub で公開されています。<br>
             私たちの言葉ではなく、コードそのものを読んでご判断ください。<br>
-            <a href="https://github.com/nagiworkshop/atolog_cc" target="_blank" rel="noopener noreferrer" class="privacy-link" style="font-weight: 500; margin-top: 0.25rem; display: inline-block;">→  https://github.com/nagiworkshop/atolog_cc</a>
+            <a href="https://github.com/nagiworkshop/atologs" target="_blank" rel="noopener noreferrer" class="privacy-link" style="font-weight: 500; margin-top: 0.25rem; display: inline-block;">→  https://github.com/nagiworkshop/atologs</a>
           </div>
 
           <div class="privacy-grid">
@@ -798,7 +798,7 @@ function guideHTML(origin: string) {
             </p>
             <p style="margin: 0;">
               <span style="font-weight: 700; color: ${colors.textPrimary};">フィードバック・お問い合わせ</span> ── 
-              バグ報告、ご提案、質問などがございましたら、お気軽に <a href="https://github.com/nagiworkshop/atolog_cc/issues" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: ${colors.textPrimary}; font-weight: 600;">GitHub Issues</a> までお寄せください。
+              バグ報告、ご提案、質問などがございましたら、お気軽に <a href="https://github.com/nagiworkshop/atologs/issues" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: ${colors.textPrimary}; font-weight: 600;">GitHub Issues</a> までお寄せください。
             </p>
           </div>
         </section>

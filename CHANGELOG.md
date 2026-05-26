@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.0.6] - 2026-05-26
+
+### Fixed
+- All in-page GitHub links now point to the public nagiworkshop/atologs repo (previously pointed to the private atolog_cc repo, which returned 404 for visitors).
+
+### Added
+- Custom GA4 event install_command_copy fired when users copy the install command from the landing page hero. Helps measure top-of-funnel conversion.
+
 ## [v1.0.5] - 2026-05-26
 
 ### Added
