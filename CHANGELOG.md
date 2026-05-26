@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.0.1] - 2026-05-26
+
+### Changed
+- Replace emoji favicon with AtoLogs logo SVG.
+
 ## [v1.0.0] - 2026-05-24
 
 ### Released
