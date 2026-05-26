@@ -62,6 +62,7 @@ app.use("/api/*", cors({
       const hostname = url.hostname;
       if (
         hostname === "atologs.com" ||
+        hostname === "atologs.com" ||
         hostname === "localhost" ||
         hostname === "127.0.0.1" ||
         hostname.endsWith(".atologs.com")
@@ -84,20 +85,32 @@ app.use("/api/*", async (c, next) => {
 
 // E7: Static SEO and Favicon endpoints
 app.get("/robots.txt", (c) => {
+  const origin = new URL(c.req.url).origin;
   c.header("Content-Type", "text/plain");
-  return c.text("User-agent: *\nAllow: /\n\nSitemap: https://atologs.com/sitemap.xml");
+  return c.text(`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml`);
 });
 
 app.get("/sitemap.xml", (c) => {
+  const origin = new URL(c.req.url).origin;
   return c.text(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://atologs.com/</loc>
+    <loc>${origin}/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://atologs.com/g/global</loc>
+    <loc>${origin}/guide</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>${origin}/sample</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>${origin}/g/global</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -115,7 +128,7 @@ app.get("/favicon.ico", (c) => {
 
 // E11: Version API endpoint
 app.get("/api/version", (c) => {
-  return c.json({ version: "1.0.0", cli: "0.3.15" });
+  return c.json({ version: "0.5.5", cli: "0.3.15" });
 });
 
 app.get("/api/health", (c) => c.json({ status: "ok" }));

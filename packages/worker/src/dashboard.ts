@@ -275,7 +275,7 @@ function buildDashboardOgSvg(
 </svg>`;
 }
 
-export function dashboardHTML(code: string, groupName: string, memberCount: number, origin: string) {
+export function dashboardHTML(code: string, groupName: string, memberCount: number, origin: string, canonicalPath?: string) {
   const isGlobal = code.toLowerCase() === "global";
   const ogTitle = isGlobal
     ? "グローバル活用ログ — AtoLogs"
@@ -2151,7 +2151,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
   return renderLayout({
     title: ogTitle,
     description: ogDesc,
-    canonical: `${origin}/g/${code}`,
+    canonical: `${origin}${canonicalPath || `/g/${code}`}`,
     active: code === "SAMPLE" ? ("none" as any) : (isGlobal ? "dashboard-global" : "dashboard-group"),
     bodyContent: bodyContent.toString(),
     extraStyles,

@@ -8,7 +8,7 @@ export const GUIDE_MARKDOWN = `# AtoLogs — クロードコード & コーデ�
 > チームや仲間内のクロードコード (Claude Code) などのコーディングエージェント利用状況リーダーボード。トークン数、費用、アクティブ状況、使用エージェントを可視化します。アカウント登録や設定は一切不要。
 
 ウェブサイト: https://atologs.com
-GitHub: https://github.com/nagiworkshop/atolog_cc
+GitHub: https://github.com/nagiworkshop/atologs
 Discord: https://discord.gg/6QbGWJUVHq
 
 ---
@@ -163,7 +163,7 @@ ccclub は、エージェント名、トークン数、見積もり費用、モ�
 
 AtoLogs のソースコードは GitHub で公開されています。
 私たちの言葉ではなく、コードそのものを読んでご判断ください。
-→  https://github.com/nagiworkshop/atolog_cc
+→  https://github.com/nagiworkshop/atologs
 
 **アップロードされない情報（絶対に送信されません）：**
 - プロンプトや入力内容
@@ -239,19 +239,43 @@ A: 全てのグループから脱退（\`ccclub leave\`）し、ローカルの 
 
 ---
 
-MIT License · https://github.com/nagiworkshop/atolog_cc
+MIT License · https://github.com/nagiworkshop/atologs
 `;
 
 export const LLMS_TXT = `# AtoLogs
 
-> Claude Code and Codex leaderboard among friends for coding agent tokens, costs, active status, and agent mix
+> Free open-source leaderboard tool for tracking coding agent (Claude Code, Codex, OpenCode, Amp, pi-agent) usage among friends and small teams. CLI auto-detects local agent logs, syncs to a shared dashboard with tokens, cost estimates, session counts, and active status. No account, no signup, MIT licensed.
+
+## Who is this for
+
+- Indie developers and small teams using Claude Code / Codex / other AI coding agents
+- Friends sharing a private leaderboard to motivate consistent shipping
+- Anyone curious about their own coding agent cost / token usage across multiple tools
+- People who want a privacy-first alternative to centralized analytics dashboards
+
+## Key features
+
+- Auto-detects log files of Claude Code, Codex, OpenCode, Amp, pi-agent from default paths on macOS/Linux/Windows
+- 6-character invite codes for private group leaderboards
+- Public global leaderboard (opt-in only — privacy first, default opt-out)
+- Token counts, estimated costs (USD), active status, agent mix per member
+- One-line CLI install (\`npx ccclub init\`), no signup
+- Self-hostable (Cloudflare Workers + KV)
+
+## How it differs from alternatives
+
+- vs ccusage / claude-usage-monitor: AtoLogs is multi-user team-oriented, not single-user CLI
+- vs Anthropic Console: AtoLogs covers multiple agents (Claude Code, Codex, OpenCode, Amp), not just Claude
+- vs GitHub Copilot dashboards: covers terminal-based coding agents, not editor copilots
 
 ## Docs
 
 - [Full Guide](https://atologs.com/llms-full.txt): Complete documentation for ccclub CLI and web dashboard
 - [Landing Page](https://atologs.com/): Product overview and quick start
+- [Usage Guide](https://atologs.com/guide): Step-by-step instructions
+- [Sample Dashboard](https://atologs.com/sample): Live demo with 3 sample members
 - [Global Leaderboard](https://atologs.com/g/global): Live public leaderboard
-- [GitHub](https://github.com/nagiworkshop/atolog_cc): Source code and README
+- [GitHub](https://github.com/nagiworkshop/atologs): Source code, README in 7 languages
 
 ## API
 
@@ -270,6 +294,8 @@ export const LLMS_TXT = `# AtoLogs
 ## Web Pages
 
 - /: Landing page
+- /guide: Usage guide and CLI instructions
+- /sample: Demo dashboard with 3 sample members
 - /g/:code: Group dashboard (live leaderboard + activity chart)
 - /g/global: Global public leaderboard
 - /invite/:code: Invite page with OG social cards

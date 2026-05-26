@@ -20,6 +20,8 @@ export interface LayoutOptions {
   extraStyles?: string;
   /** 该页特定的 <script> 块附加内容 */
   extraScripts?: string;
+  /** 该页 JSON-LD 结构化数据（Schema.org），会作为 <script type="application/ld+json"> 插入 head */
+  jsonLd?: string;
 }
 
 /**
@@ -28,7 +30,7 @@ export interface LayoutOptions {
  */
 export function renderLayout(opts: LayoutOptions): string {
   const description = opts.description ||
-    'Claude Code などのコーディングエージェント利用量・推定コスト・セッション数を記録する个人・チーム向けツール。';
+    'Claude Code などのコーディングエージェント利用量・推定コスト・セッション数を記録する個人・チーム向けツール。';
   const ogImage = opts.ogImage || 'https://atologs.com/g/global/og.png';
 
   return `<!DOCTYPE html>
@@ -60,6 +62,8 @@ export function renderLayout(opts: LayoutOptions): string {
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="/favicon.ico" type="image/x-icon" />
+
+  ${opts.jsonLd ? `<script type="application/ld+json">${opts.jsonLd}</script>` : ''}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

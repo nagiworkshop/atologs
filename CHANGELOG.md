@@ -1,5 +1,21 @@
 # Changelog
 
+## [v1.0.5] - 2026-05-26
+
+### Added
+- SEO + GEO improvements: JSON-LD structured data (Schema.org WebSite, Organization, SoftwareApplication on landing; TechArticle on guide).
+- Expanded sitemap.xml to cover /guide and /sample pages.
+- Expanded llms.txt with use cases, key features, and competitive positioning for better LLM citation.
+- Distinct meta descriptions per page (landing, guide, sample).
+
+### Fixed
+- /sample page canonical URL now correctly points to /sample instead of /g/SAMPLE.
+- Typo in default meta description (个人 → 個人).
+- llms.txt repo links now point to public nagiworkshop/atologs.
+
+### Changed
+- robots.txt and sitemap.xml now use dynamic request origin instead of hardcoded host.
+
 ## [v1.0.4] - 2026-05-26
 
 ### Added

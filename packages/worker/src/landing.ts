@@ -538,7 +538,43 @@ function landingHTML(origin: string) {
 
   return renderLayout({
     title: 'AtoLogs — AIと開発した跡を、消える前に残そう。',
+    description: 'Claude Code · Codex · OpenCode · Amp などのコーディングエージェント利用量・コスト・アクティブ状況を仲間内でランキング化する無料ツール。アカウント登録不要、CLI 一行で参加。',
     canonical: origin,
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": `${origin}/#website`,
+          "url": origin,
+          "name": "AtoLogs",
+          "description": "クロードコード (Claude Code) などのコーディングエージェント利用状況を仲間内で可視化するリーダーボード。",
+          "inLanguage": "ja-JP",
+          "publisher": { "@id": `${origin}/#org` }
+        },
+        {
+          "@type": "Organization",
+          "@id": `${origin}/#org`,
+          "name": "AtoLogs",
+          "url": origin,
+          "logo": `${origin}/favicon.svg`
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": `${origin}/#software`,
+          "name": "AtoLogs",
+          "alternateName": "ccclub CLI",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "macOS, Linux, Windows",
+          "url": origin,
+          "downloadUrl": "https://www.npmjs.com/package/ccclub",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "description": "Claude Code · Codex · OpenCode · Amp · pi-agent などのコーディングエージェント利用量・推定コスト・セッション数を計測し、仲間内ランキングで共有する CLI + Web ツール。MIT ライセンス、アカウント登録不要。",
+          "softwareVersion": "1.0",
+          "license": "https://opensource.org/licenses/MIT"
+        }
+      ]
+    }),
     active: 'home',
     bodyContent: bodyContent.toString(),
     extraStyles,

@@ -559,7 +559,7 @@ function guideHTML(origin: string) {
 
           <div style="background-color: ${colors.bgMuted}; border-left: 3px solid ${colors.border}; padding: 12px 16px; margin: 16px 0; font-size: 14px; color: ${colors.textSecondary}; line-height: 1.6;">
             ※ ブラウザからも閲覧可能：<br>
-            <code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">https://atologs.com/g/&lt;6 桁コード&gt;</code> をブラウザで开くだけ。ログインは不要で、コードを知っている人なら誰でもアクセスできます（22 億通りの組み合わせによる "Security by Obscurity"）。
+            <code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">https://atologs.com/g/&lt;6 桁コード&gt;</code> をブラウザで開くだけ。ログインは不要で、コードを知っている人なら誰でもアクセスできます（22 億通りの組み合わせによる "Security by Obscurity"）。
           </div>
         </section>
 
@@ -869,7 +869,24 @@ function guideHTML(origin: string) {
 
   return renderLayout({
     title: '使い方 — AtoLogs',
+    description: 'AtoLogs の使い方ガイド。CLI のインストール、グループの作成・参加、対応エージェント (Claude Code · Codex · OpenCode · Amp · pi-agent) の自動検出、リーダーボード共有まで、3 分で始められる手順を網羅。',
     canonical: `${origin}/guide`,
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "AtoLogs 使い方ガイド",
+      "description": "AtoLogs CLI と Web ダッシュボードの使い方。CLI インストール、グループ作成、リーダーボード閲覧までの完全ガイド。",
+      "inLanguage": "ja-JP",
+      "url": `${origin}/guide`,
+      "mainEntityOfPage": `${origin}/guide`,
+      "publisher": {
+        "@type": "Organization",
+        "name": "AtoLogs",
+        "logo": { "@type": "ImageObject", "url": `${origin}/favicon.svg` }
+      },
+      "proficiencyLevel": "Beginner",
+      "about": ["Claude Code", "Codex", "OpenCode", "Amp", "Coding Agent Analytics"]
+    }),
     active: 'guide',
     bodyContent: bodyContent.toString(),
     extraStyles,
