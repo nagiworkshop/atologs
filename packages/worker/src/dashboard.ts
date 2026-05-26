@@ -879,14 +879,6 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
   `;
 
   const bodyContent = html`
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RG2RD9V66M"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-RG2RD9V66M');
-    </script>
     <div id="toast-container" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none;"></div>
     <div class="wrap">
       <div class="top-nav">

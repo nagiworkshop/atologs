@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.0.2] - 2026-05-26
+
+### Added
+- Site-wide Google Analytics (GA4) coverage. GA snippet moved from dashboard pages only to base layout, so all pages (home, guide, messages, login, leaderboards) now report to GA.
+
 ## [v1.0.1] - 2026-05-26
 
 ### Changed
