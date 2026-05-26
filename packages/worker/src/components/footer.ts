@@ -7,6 +7,8 @@ export function renderFooter(): string {
       <div class="footer-links">
         <a href="https://github.com/nagiworkshop/atologs" target="_blank" rel="noopener noreferrer">GitHub</a>
         <span>·</span>
+        <a href="https://x.com/atologs_jp" target="_blank" rel="noopener noreferrer">X (@atologs_jp)</a>
+        <span>·</span>
         <a href="/guide">使い方</a>
         <span>·</span>
         <a href="/guide#about">このサイトについて</a>

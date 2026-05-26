@@ -563,7 +563,8 @@ function landingHTML(origin: string) {
           "@id": `${origin}/#org`,
           "name": "AtoLogs",
           "url": origin,
-          "logo": `${origin}/favicon.svg`
+          "logo": `${origin}/favicon.svg`,
+          "sameAs": ["https://x.com/atologs_jp", "https://github.com/nagiworkshop/atologs"]
         },
         {
           "@type": "SoftwareApplication",

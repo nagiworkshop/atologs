@@ -56,6 +56,8 @@ export function renderLayout(opts: LayoutOptions): string {
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@atologs_jp" />
+  <meta name="twitter:creator" content="@atologs_jp" />
   <meta name="twitter:title" content="${opts.title}" />
   <meta name="twitter:description" content="${description}" />
   <meta name="twitter:image" content="${ogImage}" />

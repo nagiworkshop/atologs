@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.0.8] - 2026-05-26
+
+### Added
+- Official X (Twitter) account @atologs_jp linked from footer, twitter:site + twitter:creator meta tags for proper attribution on share cards, and JSON-LD sameAs for SEO entity disambiguation.
+
 ## [v1.0.7] - 2026-05-26
 
 ### Fixed
