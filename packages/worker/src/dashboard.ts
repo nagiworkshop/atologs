@@ -289,8 +289,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
       : `${htmlEsc(code)}のコーディングエージェント利用状況リーダーボード。`;
 
   const extraStyles = `
-    body.unauthenticated #raw-data-btn-container,
-    body.unauthenticated #sharing-banner {
+    body.unauthenticated #raw-data-btn-container {
       display: none !important;
     }
 
@@ -1365,10 +1364,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
 
       var rawBtn = document.getElementById("raw-data-btn-container");
       if (rawBtn) rawBtn.style.display = "none";
-      
-      var sharingBanner = document.getElementById("sharing-banner");
-      if (sharingBanner) sharingBanner.style.display = "none";
-      
+
       var inviteCodeDisplay = document.getElementById("invite-code-display");
       if (inviteCodeDisplay) {
         inviteCodeDisplay.textContent = 'npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx atologs join ' + CODE;
@@ -2030,6 +2026,13 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
     function updateSharingUI(visibility) {
       isSharingPublic = (visibility === "public");
       if (!toggleBtn) return;
+      if (visibility === "__guest__") {
+        toggleBtn.classList.remove("active");
+        if (sharingIcon) sharingIcon.textContent = "🔑";
+        if (sharingTitle) { sharingTitle.textContent = "公開設定（タップしてログイン）"; sharingTitle.style.color = "var(--text)"; }
+        if (sharingDesc) sharingDesc.textContent = "本人がログインすると、グローバルランキングへの公開／非公開を切り替えられます。";
+        return;
+      }
       if (isSharingPublic) {
         toggleBtn.classList.add("active");
         if (sharingIcon) sharingIcon.textContent = "🌐";
@@ -2050,7 +2053,13 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
     }
 
     function initSharing() {
-      if (!userToken || IS_GLOBAL) return;
+      if (IS_GLOBAL) return;
+      var banner = document.getElementById("sharing-banner");
+      if (banner) banner.style.display = "flex";
+      if (!userToken) {
+        updateSharingUI("__guest__");
+        return;
+      }
       fetch("/api/profile", {
         headers: { "Authorization": "Bearer " + userToken }
       })
@@ -2058,16 +2067,14 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
         if (res.status === 401) {
           localStorage.removeItem("atologs_user_token");
           goUnauthenticated();
+          updateSharingUI("__guest__");
           return;
         }
         return res.json();
       })
       .then(function(profile) {
         if (!profile) return;
-        var banner = document.getElementById("sharing-banner");
-        if (banner) {
-          banner.style.display = "flex";
-        }
+        if (banner) banner.style.display = "flex";
         updateSharingUI(profile.visibility);
       })
       .catch(function(err) {
@@ -2077,7 +2084,14 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
 
     if (toggleBtn) {
       toggleBtn.addEventListener("click", function() {
-        if (!userToken) return;
+        if (!userToken) {
+          var t = window.prompt("公開設定を切り替えるにはログインが必要です。npx atologs init で表示されるログインリンクを開くか、~/.ccclub/config.json 内の token を貼り付けてください：");
+          if (t && t.trim()) {
+            localStorage.setItem("atologs_user_token", t.trim());
+            location.reload();
+          }
+          return;
+        }
         toggleBtn.disabled = true;
         var nextVisibility = isSharingPublic ? "private" : "public";
         fetch("/api/profile", {

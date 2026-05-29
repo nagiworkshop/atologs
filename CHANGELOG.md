@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.1.0] - 2026-05-30
+
+### Added
+- Sharing toggle now appears on the group dashboard even when logged out, as a friendly login entry. Visitors see the public/private switch; clicking it while logged out prompts for a login token. Only the authenticated owner can actually change visibility — privacy model unchanged.
+
 ## [v1.0.9] - 2026-05-29
 
 ### Changed
