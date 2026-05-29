@@ -23,7 +23,7 @@ if (process.argv.slice(2).includes("-v")) {
 }
 
 program
-  .name("ccclub")
+  .name("atologs")
   .description("Claude Code, Codex, OpenCode, Amp, pi-agent の使用状況を友達と競い合うリーダーボード")
   .version(VERSION);
 

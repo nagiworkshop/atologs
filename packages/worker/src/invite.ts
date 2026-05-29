@@ -14,7 +14,7 @@
 import { Hono } from "hono";
 import { html, raw } from "hono/html";
 import type { Env } from "./types.js";
-import type { GroupRecord } from "@ccclub/shared";
+import type { GroupRecord } from "@atologs/shared";
 import { cachedPngResponse, getColor, hashCode, htmlEsc, latinOnly, ogCacheUrl, renderToPng, sanitizeCode, svgEsc, truncate } from "./og-utils.js";
 import { renderLayout, renderFeedbackCta } from "./components/layout.js";
 import { colors, fontSize, spacing, radius } from "./design-tokens.js";
@@ -263,7 +263,7 @@ function inviteHTML(group: GroupRecord, origin: string) {
         <div class="join-cmd mono" id="join-cmd">
           <div style="display:flex; align-items:center;">
             <span class="dollar">$</span>
-            <span class="cmd-text">CCCLUB_API_URL=${origin} npx ccclub join ${code}</span>
+            <span class="cmd-text">CCCLUB_API_URL=${origin} npx atologs join ${code}</span>
           </div>
           <span class="copy-hint" style="white-space:nowrap;">クリックしてコピー</span>
           <span class="copied-msg" id="copied-msg">コピーしました！</span>
@@ -274,7 +274,7 @@ function inviteHTML(group: GroupRecord, origin: string) {
           <div class="join-cmd mono" id="join-cmd-win" style="margin-top:4px;">
             <div style="display:flex; align-items:center;">
               <span class="dollar">$</span>
-              <span class="cmd-text">npx cross-env CCCLUB_API_URL=${origin} npx ccclub join ${code}</span>
+              <span class="cmd-text">npx cross-env CCCLUB_API_URL=${origin} npx atologs join ${code}</span>
             </div>
             <span class="copy-hint" style="white-space:nowrap;">クリックしてコピー</span>
             <span class="copied-msg" id="copied-msg-win">コピーしました！</span>
@@ -296,14 +296,14 @@ function inviteHTML(group: GroupRecord, origin: string) {
 
   const extraScripts = `
     document.getElementById("join-cmd").addEventListener("click", function() {
-      navigator.clipboard.writeText("CCCLUB_API_URL=${origin} npx ccclub join ${code}");
+      navigator.clipboard.writeText("CCCLUB_API_URL=${origin} npx atologs join ${code}");
       const msg = document.getElementById("copied-msg");
       msg.style.opacity = "1";
       setTimeout(function() { msg.style.opacity = "0"; }, 2000);
     });
 
     document.getElementById("join-cmd-win").addEventListener("click", function() {
-      navigator.clipboard.writeText("npx cross-env CCCLUB_API_URL=${origin} npx ccclub join ${code}");
+      navigator.clipboard.writeText("npx cross-env CCCLUB_API_URL=${origin} npx atologs join ${code}");
       const msg = document.getElementById("copied-msg-win");
       msg.style.opacity = "1";
       setTimeout(function() { msg.style.opacity = "0"; }, 2000);
@@ -448,7 +448,7 @@ function buildOgSvg(group: GroupRecord, origin: string): string {
   <!-- Join command -->
   <rect x="86" y="454" width="512" height="62" rx="14" fill="#080807" stroke="#26221e" stroke-width="1"/>
   <text x="112" y="493" fill="#5fdc8f" font-size="18" font-weight="700" font-family="Inter, monospace">$</text>
-  <text x="136" y="491" fill="#f1ede7" font-size="13" font-family="Inter, monospace" xml:space="preserve">npx cross-env CCCLUB_API_URL=${svgEsc(origin)} npx ccclub join ${code}</text>
+  <text x="136" y="491" fill="#f1ede7" font-size="13" font-family="Inter, monospace" xml:space="preserve">npx cross-env CCCLUB_API_URL=${svgEsc(origin)} npx atologs join ${code}</text>
 
   <!-- Preview panel -->
   <rect x="684" y="110" width="430" height="406" rx="20" fill="#201d19" stroke="#2c2824"/>

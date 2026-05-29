@@ -429,31 +429,31 @@ function landingHTML(origin: string) {
     <div class="divide-y-list" style="border-top: 1px solid ${colors.border}; border-bottom: 1px solid ${colors.border};">
       <div style="padding: 0.875rem 0; display: flex; flex-direction: column; gap: 0.375rem;">
         <div style="display: flex; align-items: center;">
-          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx ccclub init</code>
+          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx atologs init</code>
         </div>
         <span style="font-size: 0.875rem; color: ${colors.textSecondary};">グループを作成して開始（初回セットアップ）</span>
       </div>
       <div style="padding: 0.875rem 0; display: flex; flex-direction: column; gap: 0.375rem;">
         <div style="display: flex; align-items: center;">
-          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx ccclub join 代码</code>
+          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx atologs join 代码</code>
         </div>
         <span style="font-size: 0.875rem; color: ${colors.textSecondary};">招待コードを使ってグループに参加</span>
       </div>
       <div style="padding: 0.875rem 0; display: flex; flex-direction: column; gap: 0.375rem;">
         <div style="display: flex; align-items: center;">
-          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx ccclub</code>
+          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx atologs</code>
         </div>
         <span style="font-size: 0.875rem; color: ${colors.textSecondary};">本日のリーダーボードを表示（アクティブメンバーのみ）</span>
       </div>
       <div style="padding: 0.875rem 0; display: flex; flex-direction: column; gap: 0.375rem;">
         <div style="display: flex; align-items: center;">
-          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx ccclub sync</code>
+          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx atologs sync</code>
         </div>
         <span style="font-size: 0.875rem; color: ${colors.textSecondary};">手動同期を実行</span>
       </div>
       <div style="padding: 0.875rem 0; display: flex; flex-direction: column; gap: 0.375rem;">
         <div style="display: flex; align-items: center;">
-          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx ccclub show-data</code>
+          <code style="font-size: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; color: #262626; background-color: ${colors.bgMuted}; padding: 0.25rem 0.5rem; border-radius: 0.25rem; word-break: break-all; user-select: all; -webkit-user-select: all;">npx cross-env CCCLUB_API_URL=\${origin} npx atologs show-data</code>
         </div>
         <span style="font-size: 0.875rem; color: ${colors.textSecondary};">プライバシー監査（送信されるデータを確認）</span>
       </div>
@@ -473,7 +473,7 @@ function landingHTML(origin: string) {
       human: {
         title: "コマンドを1つ実行するだけで開始できます。",
         subtitle: "AtoLogs がローカルのエージェントのログを自動検出し、生成された招待コードを仲間と共有して参加させることができます。",
-        copy: "npx cross-env CCCLUB_API_URL=" + origin + " npx ccclub init",
+        copy: "npx cross-env CCCLUB_API_URL=" + origin + " npx atologs init",
         btnText: "コマンドをコピー"
       }
     };
@@ -570,7 +570,7 @@ function landingHTML(origin: string) {
           "@type": "SoftwareApplication",
           "@id": `${origin}/#software`,
           "name": "AtoLogs",
-          "alternateName": "ccclub CLI",
+          "alternateName": "atologs CLI",
           "applicationCategory": "DeveloperApplication",
           "operatingSystem": "macOS, Linux, Windows",
           "url": origin,

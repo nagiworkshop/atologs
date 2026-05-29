@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.0.9] - 2026-05-29
+
+### Changed
+- CLI is now the standalone npm package `atologs` (forked from ccclub). All docs instruct `npx atologs`.
+- CLI default endpoint is atologs.com.
+
+### Added
+- `atologs init` prints a pre-authenticated dashboard link so members can log in via browser and toggle public/private sharing.
+
 ## [v1.0.8] - 2026-05-26
 
 ### Added

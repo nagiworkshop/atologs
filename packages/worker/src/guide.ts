@@ -17,13 +17,13 @@ Discord: https://discord.gg/6QbGWJUVHq
 
 \`\`\`bash
 # 1. 初期化 (グループを作成し、自動同期を有効にします)
-npx ccclub init
+npx atologs init
 
 # 2. 招待リンクを仲間に共有する
 #    (初期化後に表示されます — 例: https://atologs.com/invite/YHAW6P)
 
 # 3. リーダーボードを表示する
-ccclub
+atologs
 \`\`\`
 
 ---
@@ -31,7 +31,7 @@ ccclub
 ## インストールとセットアップ
 
 \`\`\`bash
-npx ccclub init
+npx atologs init
 \`\`\`
 
 この1つのコマンドで以下が実行されます：
@@ -39,13 +39,13 @@ npx ccclub init
 - 6文字の招待コードを持つグループの作成
 - マシン上の対応コーディングエージェントのログの検出
 - 自動同期の設定
-- \`ccclub\` コマンドをグローバルにインストールし、次回から \`npx\` なしで実行可能にする
+- \`atologs\` コマンドをグローバルにインストールし、次回から \`npx\` なしで実行可能にする
 
 ---
 
 ## 対応コーディングエージェント
 
-ccclub は以下のデフォルトのログ保存場所から自動的に使用データを検出します：
+atologs は以下のデフォルトのログ保存場所から自動的に使用データを検出します：
 
 | エージェント | デフォルトのログ保存場所 |
 |-------|------------------|
@@ -72,7 +72,7 @@ This link should be shared on Slack, Discord, LINE, iMessage, etc. Opening this 
 
 招待された仲間は、以下のコマンドを実行して参加します：
 \`\`\`bash
-npx ccclub join YHAW6P
+npx atologs join YHAW6P
 \`\`\`
 
 ---
@@ -81,14 +81,14 @@ npx ccclub join YHAW6P
 
 ### コマンドライン (CLI)
 \`\`\`bash
-ccclub                  # 本日のリーダーボードを表示 (デフォルト)
-ccclub -d 1             # 昨日のデータ
-ccclub -d 7             # 過去7日間
-ccclub -d 30            # 過去30日間
-ccclub -d all           # 全期間
-ccclub --global         # グローバル公開リーダーボードを表示
-ccclub --all            # アクティビティのないメンバーを含む全員を表示
-ccclub -g XYZABC        # 指定したグループを表示
+atologs                  # 本日のリーダーボードを表示 (デフォルト)
+atologs -d 1             # 昨日のデータ
+atologs -d 7             # 過去7日間
+atologs -d 30            # 過去30日間
+atologs -d all           # 全期間
+atologs --global         # グローバル公開リーダーボードを表示
+atologs --all            # アクティビティのないメンバーを含む全員を表示
+atologs -g XYZABC        # 指定したグループを表示
 \`\`\`
 
 ### ウェブダッシュボード
@@ -114,24 +114,24 @@ ccclub -g XYZABC        # 指定したグループを表示
 
 | コマンド | 説明 |
 |---------|-------------|
-| \`ccclub init\` | グループを作成して開始（初回セットアップ） |
-| \`ccclub join <コード>\` | 6文字の招待コードを使用してグループに参加 |
-| \`ccclub\` | 本日のリーダーボードを表示 |
-| \`ccclub -d 1\\|7\\|30\\|all\` | 集計期間 of specified period (Yesterday / 7 Days / 30 Days / All Time) |
-| \`ccclub --global\` | グローバル公開リーダーボードを表示 |
-| \`ccclub --all\` | アクティビティのないメンバーを含む全員を表示 |
-| \`ccclub create\` | 追加のグループを作成 |
-| \`ccclub leave [コード]\` | グループから脱退 |
-| \`ccclub sync\` | 手動でデータを同期（通常は自動でバックグラウンド実行されます） |
-| \`ccclub sync --force\` | ローカルログを再スキャンしてすべて再アップロード |
-| \`ccclub profile\` | プロフィールの表示 |
-| \`ccclub profile --name <名前>\` | 表示名の変更 |
-| \`ccclub profile --avatar <URL>\` | アバター画像のURLを設定 |
-| \`ccclub profile --public\` | グローバルランキングに表示する（公開） |
-| \`ccclub profile --private\` | グローバルランキングに表示しない（非公開） |
-| \`ccclub profile --plan pro\\|max100\\|max200\\|api\` | 契約中のサブスクリプションプランを設定（ROI計算用） |
-| \`ccclub profile --url <URL>\` | 表示名にリンクするURLを設定 |
-| \`ccclub show-data\` | アップロードされる生データをプレビュー（プライバシー確認用） |
+| \`atologs init\` | グループを作成して開始（初回セットアップ） |
+| \`atologs join <コード>\` | 6文字の招待コードを使用してグループに参加 |
+| \`atologs\` | 本日のリーダーボードを表示 |
+| \`atologs -d 1\\|7\\|30\\|all\` | 集計期間 of specified period (Yesterday / 7 Days / 30 Days / All Time) |
+| \`atologs --global\` | グローバル公開リーダーボードを表示 |
+| \`atologs --all\` | アクティビティのないメンバーを含む全員を表示 |
+| \`atologs create\` | 追加のグループを作成 |
+| \`atologs leave [コード]\` | グループから脱退 |
+| \`atologs sync\` | 手動でデータを同期（通常は自動でバックグラウンド実行されます） |
+| \`atologs sync --force\` | ローカルログを再スキャンしてすべて再アップロード |
+| \`atologs profile\` | プロフィールの表示 |
+| \`atologs profile --name <名前>\` | 表示名の変更 |
+| \`atologs profile --avatar <URL>\` | アバター画像のURLを設定 |
+| \`atologs profile --public\` | グローバルランキングに表示する（公開） |
+| \`atologs profile --private\` | グローバルランキングに表示しない（非公開） |
+| \`atologs profile --plan pro\\|max100\\|max200\\|api\` | 契約中のサブスクリプションプランを設定（ROI計算用） |
+| \`atologs profile --url <URL>\` | 表示名にリンクするURLを設定 |
+| \`atologs show-data\` | アップロードされる生データをプレビュー（プライバシー確認用） |
 
 ---
 
@@ -140,26 +140,26 @@ ccclub -g XYZABC        # 指定したグループを表示
 サブスクリプションプランを設定すると、リーダーボードで月間ROI（投資対効果）が表示されます：
 
 \`\`\`bash
-ccclub profile --plan max200    # Claude Maxプラン ($200/月)
-ccclub profile --plan max100    # Claude Maxプラン ($100/月)
-ccclub profile --plan pro       # Claude Proプラン ($20/月)
-ccclub profile --plan api       # API利用ユーザー
+atologs profile --plan max200    # Claude Maxプラン ($200/月)
+atologs profile --plan max100    # Claude Maxプラン ($100/月)
+atologs profile --plan pro       # Claude Proプラン ($20/月)
+atologs profile --plan api       # API利用ユーザー
 \`\`\`
 
 ROIは支払ったサブスク料金に対してどれだけ価値を得られたかを示します：\`$200/1610%\` は、$200のプランに対して $3,220 相当のエージェント利用を行ったことを意味します。
 
 その他のプロフィールオプション：
 \`\`\`bash
-ccclub profile --public         # グローバルリーダーボードに参加する
-ccclub profile --url https://github.com/ユーザー名
-ccclub profile --avatar https://example.com/photo.jpg
+atologs profile --public         # グローバルリーダーボードに参加する
+atologs profile --url https://github.com/ユーザー名
+atologs profile --avatar https://example.com/photo.jpg
 \`\`\`
 
 ---
 
 ## プライバシーについて
 
-ccclub は、エージェント名、トークン数、見積もり費用、モデル名、および実行回数のみをローカルログ（Claude Code、Codex、OpenCode、Amp、pi-agent）から読み取ります。
+atologs は、エージェント名、トークン数、見積もり費用、モデル名、および実行回数のみをローカルログ（Claude Code、Codex、OpenCode、Amp、pi-agent）から読み取ります。
 
 AtoLogs のソースコードは GitHub で公開されています。
 私たちの言葉ではなく、コードそのものを読んでご判断ください。
@@ -172,15 +172,15 @@ AtoLogs のソースコードは GitHub で公開されています。
 - ファイルパスやプロジェクト名
 - 会話ログ
 
-\`ccclub show-data\` を実行することで、アップロードされるデータを正確に確認できます。
+\`atologs show-data\` を実行することで、アップロードされるデータを正確に確認できます。
 
 ---
 
 ## 同期の仕組み
 
-- **自動同期**: \`ccclub init\` を実行すると、Claude Code のセッション終了フックと、その他のエージェント用の軽量なバックグラウンド同期が設定されます。
-- **手動同期**: \`ccclub sync\` コマンドでいつでも同期できます。
-- **フルスキャン**: \`ccclub sync --force\` でローカルログを再スキャンできます。
+- **自動同期**: \`atologs init\` を実行すると、Claude Code のセッション終了フックと、その他のエージェント用の軽量なバックグラウンド同期が設定されます。
+- **手動同期**: \`atologs sync\` コマンドでいつでも同期できます。
+- **フルスキャン**: \`atologs sync --force\` でローカルログを再スキャンできます。
 - アップロード前に使用データは30分ごとのブロックに集計されます。
 
 ---
@@ -190,13 +190,13 @@ AtoLogs のソースコードは GitHub で公開されています。
 複数のグループに同時に参加することができます：
 
 \`\`\`bash
-ccclub create              # 新たなグループを作成する
-ccclub join XYZABC         # 仲間のグループに参加する
-ccclub -g XYZABC           # 特定のグループのリーダーボードを表示する
-ccclub leave XYZABC        # グループから脱退する
+atologs create              # 新たなグループを作成する
+atologs join XYZABC         # 仲間のグループに参加する
+atologs -g XYZABC           # 特定のグループのリーダーボードを表示する
+atologs leave XYZABC        # グループから脱退する
 \`\`\`
 
-\`ccclub\` を引数なしで実行すると、参加しているすべてのグループのリーダーボードが一度に表示されます。
+\`atologs\` を引数なしで実行すると、参加しているすべてのグループのリーダーボードが一度に表示されます。
 
 ---
 
@@ -217,7 +217,7 @@ ccclub leave XYZABC        # グループから脱退する
 A: いいえ。対応しているコーディングエージェントの利用統計データ（トークン数、費用、モデル名等）のみをローカルログから読み取ります。
 
 **Q: アカウント作成は必要ですか？**
-A: 不要です。<code class="mono">npx ccclub init</code> を実行するだけです。メールアドレスやパスワードの設定は不要です。
+A: 不要です。<code class="mono">npx atologs init</code> を実行するだけです。メールアドレスやパスワードの設定は不要です。
 
 **Q: 自動同期はどのように動作しますか？**
 A: Claude Code の終了時フックと、その他のエージェント用のバックグラウンドプロセスが自動同期します。手動での同期も可能です。
@@ -226,16 +226,16 @@ A: Claude Code の終了時フックと、その他のエージェント用の�
 A: 不要です。デフォルトの保存先から自動的に検出されます。カスタムの場所にある場合のみ指定してください。
 
 **Q: 複数のグループに参加できますか？**
-A: はい。\`ccclub create\` または \`ccclub join <コード>\` で自由に追加できます。
+A: はい。\`atologs create\` または \`atologs join <コード>\` で自由に追加できます。
 
 **Q: 月間ROIとは何ですか？**
-A: プラン（例: \`ccclub profile --plan max200\`）を設定すると、支払っている月額料金に対してどれだけの金額分のエージェント利用を行ったかをパーセンテージで表示します。1610% は約16倍使ったことを意味します。
+A: プラン（例: \`atologs profile --plan max200\`）を設定すると、支払っている月額料金に対してどれだけの金額分のエージェント利用を行ったかをパーセンテージで表示します。1610% は約16倍使ったことを意味します。
 
 **Q: グローバルリーダーボードに表示するにはどうすればよいですか？**
-A: \`ccclub profile --public\` を実行します。使用データが atologs.com/g/global に公開されます。
+A: \`atologs profile --public\` を実行します。使用データが atologs.com/g/global に公開されます。
 
 **Q: データを削除するには？**
-A: 全てのグループから脱退（\`ccclub leave\`）し、ローカルの \`~/.ccclub/\` ディレクトリを削除してください。サーバー上のデータは一定期間後に失効し削除されます。
+A: 全てのグループから脱退（\`atologs leave\`）し、ローカルの \`~/.ccclub/\` ディレクトリを削除してください。サーバー上のデータは一定期間後に失効し削除されます。
 
 ---
 
@@ -259,7 +259,7 @@ export const LLMS_TXT = `# AtoLogs
 - 6-character invite codes for private group leaderboards
 - Public global leaderboard (opt-in only — privacy first, default opt-out)
 - Token counts, estimated costs (USD), active status, agent mix per member
-- One-line CLI install (\`npx ccclub init\`), no signup
+- One-line CLI install (\`npx atologs init\`), no signup
 - Self-hostable (Cloudflare Workers + KV)
 
 ## How it differs from alternatives
@@ -270,7 +270,7 @@ export const LLMS_TXT = `# AtoLogs
 
 ## Docs
 
-- [Full Guide](https://atologs.com/llms-full.txt): Complete documentation for ccclub CLI and web dashboard
+- [Full Guide](https://atologs.com/llms-full.txt): Complete documentation for atologs CLI and web dashboard
 - [Landing Page](https://atologs.com/): Product overview and quick start
 - [Usage Guide](https://atologs.com/guide): Step-by-step instructions
 - [Sample Dashboard](https://atologs.com/sample): Live demo with 3 sample members
@@ -312,12 +312,12 @@ app.get("/llms-full.txt", (c) => {
   const origin = new URL(c.req.url).origin;
   const processed = GUIDE_MARKDOWN
     .replaceAll("https://atologs.com", origin)
-    .replaceAll("npx ccclub init", `npx cross-env CCCLUB_API_URL=${origin} npx ccclub init`)
-    .replaceAll("npx ccclub join", `npx cross-env CCCLUB_API_URL=${origin} npx ccclub join`)
-    .replaceAll("ccclub sync", `npx cross-env CCCLUB_API_URL=${origin} ccclub sync`)
-    .replaceAll("ccclub profile", `npx cross-env CCCLUB_API_URL=${origin} ccclub profile`)
-    .replaceAll("ccclub show-data", `npx cross-env CCCLUB_API_URL=${origin} ccclub show-data`)
-    .replaceAll("ccclub leave", `npx cross-env CCCLUB_API_URL=${origin} ccclub leave`);
+    .replaceAll("npx atologs init", `npx cross-env CCCLUB_API_URL=${origin} npx atologs init`)
+    .replaceAll("npx atologs join", `npx cross-env CCCLUB_API_URL=${origin} npx atologs join`)
+    .replaceAll("atologs sync", `npx cross-env CCCLUB_API_URL=${origin} atologs sync`)
+    .replaceAll("atologs profile", `npx cross-env CCCLUB_API_URL=${origin} atologs profile`)
+    .replaceAll("atologs show-data", `npx cross-env CCCLUB_API_URL=${origin} atologs show-data`)
+    .replaceAll("atologs leave", `npx cross-env CCCLUB_API_URL=${origin} atologs leave`);
   return c.text(processed, 200, { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" });
 });
 

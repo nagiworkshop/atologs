@@ -435,7 +435,7 @@ function guideHTML(origin: string) {
           <div style="margin-top: 1rem;">
             <div style="display: flex; align-items: center; gap: 0.75rem;">
               <div style="flex: 1; text-align: left; background-color: ${colors.codeBg}; border: 1px solid #262626; border-radius: 0.375rem; padding: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.875rem; word-break: break-all; color: ${colors.codeFg}; user-select: all; -webkit-user-select: all; display: flex; align-items: center; min-height: 48px;">
-                <code id="code-quickinit" style="width: 100%;">CCCLUB_API_URL=${origin} npx ccclub init</code>
+                <code id="code-quickinit" style="width: 100%;">CCCLUB_API_URL=${origin} npx atologs init</code>
               </div>
               <button onclick="copyText('code-quickinit', 'toast-quickinit')" class="btn-copy" type="button">
                 <svg style="width: 1rem; height: 1rem; color: white;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 16H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -503,7 +503,7 @@ function guideHTML(origin: string) {
             <div>
               <div style="display: flex; align-items: center; gap: 0.75rem;">
                 <div style="flex: 1; text-align: left; background-color: ${colors.codeBg}; border: 1px solid #262626; border-radius: 0.375rem; padding: 0.875rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.875rem; word-break: break-all; color: ${colors.codeFg}; user-select: all; -webkit-user-select: all; display: flex; align-items: center; min-height: 48px;">
-                  <code id="code-manualcmd" style="width: 100%;">CCCLUB_API_URL=${origin} npx ccclub init</code>
+                  <code id="code-manualcmd" style="width: 100%;">CCCLUB_API_URL=${origin} npx atologs init</code>
                 </div>
                 <button onclick="copyText('code-manualcmd', 'toast-manualcmd')" class="btn-copy" type="button">
                   <svg style="width: 1rem; height: 1rem; color: white;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 16H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -583,7 +583,7 @@ function guideHTML(origin: string) {
 
           <div style="background-color: ${colors.bgMuted}; border-left: 3px solid ${colors.border}; padding: 12px 16px; margin: 16px 0; font-size: 14px; color: ${colors.textSecondary}; line-height: 1.6;">
             ※ 招待リンクをそのままブラウザでシェアすることもできます。<br>
-            受け取った相手は CLI をインストールしなくても、リンクをクリックするだけでグループのリーダーボードを閲覧できます。CLI でデータを送信したい場合のみ <code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">ccclub join &lt;コード&gt;</code> を実行してください。
+            受け取った相手は CLI をインストールしなくても、リンクをクリックするだけでグループのリーダーボードを閲覧できます。CLI でデータを送信したい場合のみ <code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">atologs join &lt;コード&gt;</code> を実行してください。
           </div>
         </section>
 
@@ -633,7 +633,7 @@ function guideHTML(origin: string) {
             <p>
               どのようなデータが送信されるかご自身の目で直接監査できます。ターミナルで以下のコマンドを実行してください：
             </p>
-            <code style="display: block; background-color: ${colors.codeBg}; color: ${colors.codeFg}; border-radius: 0.25rem; padding: 0.625rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; margin-top: 0.5rem;">CCCLUB_API_URL=${origin} npx ccclub show-data</code>
+            <code style="display: block; background-color: ${colors.codeBg}; color: ${colors.codeFg}; border-radius: 0.25rem; padding: 0.625rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; margin-top: 0.5rem;">CCCLUB_API_URL=${origin} npx atologs show-data</code>
           </div>
         </section>
 
@@ -645,7 +645,7 @@ function guideHTML(origin: string) {
           </p>
 
           <p style="background-color: ${colors.bgMuted}; border-left: 3px solid ${colors.border}; padding: 12px 16px; margin: 16px 0; font-size: 14px; color: ${colors.textSecondary}; line-height: 1.6;">
-            ※ AtoLogs は upstream の <strong>ccclub</strong> CLI（npm パッケージ名）を使用しています。互換性のため、コマンド名は <code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">ccclub</code> のままお使いください。
+            ※ AtoLogs は upstream の <strong>atologs</strong> CLI（npm パッケージ名）を使用しています。互換性のため、コマンド名は <code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">atologs</code> のままお使いください。
           </p>
 
           <div style="overflow-x: auto; border: 1px solid ${colors.border}; border-radius: 0.5rem; background-color: ${colors.bgWhite}; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); margin-top: 0.75rem;">
@@ -658,27 +658,27 @@ function guideHTML(origin: string) {
               </thead>
               <tbody style="color: ${colors.textSecondary};">
                 <tr>
-                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">ccclub init</td>
+                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">atologs init</td>
                   <td>グループを作成して開始（初回セットアップ）</td>
                 </tr>
                 <tr>
-                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">ccclub join &lt;コード&gt;</td>
+                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">atologs join &lt;コード&gt;</td>
                   <td>招待コードを使用してグループに参加</td>
                 </tr>
                 <tr>
-                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">ccclub</td>
+                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">atologs</td>
                   <td>本日のリーダーボードを表示</td>
                 </tr>
                 <tr>
-                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">ccclub profile --name "..."</td>
+                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">atologs profile --name "..."</td>
                   <td>表示名を変更</td>
                 </tr>
                 <tr>
-                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">ccclub show-data</td>
+                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">atologs show-data</td>
                   <td>アップロードされる生データをプレビュー</td>
                 </tr>
                 <tr>
-                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">ccclub leave &lt;コード&gt;</td>
+                  <td style="font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">atologs leave &lt;コード&gt;</td>
                   <td>グループから脱退</td>
                 </tr>
               </tbody>
@@ -691,12 +691,12 @@ function guideHTML(origin: string) {
               <svg style="width: 1rem; height: 1rem; color: ${colors.textFaint};" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
             </summary>
             <div style="padding: 1rem; border-top: 1px solid ${colors.border}; background-color: ${colors.bgWhite}; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; color: ${colors.textSecondary}; display: flex; flex-direction: column; gap: 0.5rem;">
-              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">ccclub create</span> — 新たなグループを作成する</p>
-              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">ccclub sync</span> — 手動同期（通常は自動でバックグラウンド実行）</p>
-              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">ccclub sync --force</span> — ローカルログを再スキャンしてすべて再アップロード</p>
-              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">ccclub profile --avatar &lt;URL&gt;</span> — カスタムアバター画像を設定</p>
-              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">ccclub profile --public</span> — グローバルランキングに公開する（公開）</p>
-              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">ccclub profile --private</span> — グローバルランキングから非公開にする（非公開・デフォルト）</p>
+              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">atologs create</span> — 新たなグループを作成する</p>
+              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">atologs sync</span> — 手動同期（通常は自動でバックグラウンド実行）</p>
+              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">atologs sync --force</span> — ローカルログを再スキャンしてすべて再アップロード</p>
+              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">atologs profile --avatar &lt;URL&gt;</span> — カスタムアバター画像を設定</p>
+              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">atologs profile --public</span> — グローバルランキングに公開する（公開）</p>
+              <p style="margin: 0;"><span style="font-weight: 700; color: ${colors.textSecondary};">atologs profile --private</span> — グローバルランキングから非公開にする（非公開・デフォルト）</p>
               <p style="padding-top: 0.5rem; color: ${colors.textFaint}; font-family: 'Noto Sans JP', sans-serif !important; margin: 0;">※ 全ての CLI オプションは <a href="/llms-full.txt" style="text-decoration: underline; color: ${colors.textSecondary};">llms-full.txt</a> より確認いただけます。</p>
             </div>
           </details>
@@ -715,7 +715,7 @@ function guideHTML(origin: string) {
               </summary>
               <div style="padding: 1rem; border-top: 1px solid ${colors.border}; font-size: 0.875rem; color: ${colors.textSecondary}; line-height: 1.625; background-color: rgba(250, 250, 249, 0.5);">
                 通常はバックグラウンドで自動的に同期されますが、強制的にローカルログをスキャンして再アップロードするには、ターミナルで以下のコマンドを実行してください：
-                <code style="display: block; background-color: ${colors.codeBg}; color: ${colors.codeFg}; border-radius: 0.25rem; padding: 0.5rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; margin-top: 0.5rem;">CCCLUB_API_URL=${origin} npx ccclub sync --force</code>
+                <code style="display: block; background-color: ${colors.codeBg}; color: ${colors.codeFg}; border-radius: 0.25rem; padding: 0.5rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; margin-top: 0.5rem;">CCCLUB_API_URL=${origin} npx atologs sync --force</code>
               </div>
             </details>
 
@@ -745,7 +745,7 @@ function guideHTML(origin: string) {
                 <svg style="width: 1rem; height: 1rem; color: ${colors.textFaint};" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
               </summary>
               <div style="padding: 1rem; border-top: 1px solid ${colors.border}; font-size: 0.875rem; color: ${colors.textSecondary}; line-height: 1.625; background-color: rgba(250, 250, 249, 0.5);">
-                恐れ入りますが、現在グループ名の後からの変更はサポートされておりません。新しいグループを作成（<code class="code-inline">ccclub create</code>）いただき、改めてメンバーを招待してください。
+                恐れ入りますが、現在グループ名の後からの変更はサポートされておりません。新しいグループを作成（<code class="code-inline">atologs create</code>）いただき、改めてメンバーを招待してください。
               </div>
             </details>
 
@@ -755,7 +755,7 @@ function guideHTML(origin: string) {
                 <svg style="width: 1rem; height: 1rem; color: ${colors.textFaint};" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
               </summary>
               <div style="padding: 1rem; border-top: 1px solid ${colors.border}; font-size: 0.875rem; color: ${colors.textSecondary}; line-height: 1.625; background-color: rgba(250, 250, 249, 0.5);">
-                参加しているすべてのグループから脱退（<code class="code-inline">ccclub leave</code>）を実行し、マシンのローカルに存在する設定フォルダー <code class="code-inline">~/.ccclub/</code> を削除してください。サーバー上の古いデータは一定期間後に自動消滅します。
+                参加しているすべてのグループから脱退（<code class="code-inline">atologs leave</code>）を実行し、マシンのローカルに存在する設定フォルダー <code class="code-inline">~/.ccclub/</code> を削除してください。サーバー上の古いデータは一定期間後に自動消滅します。
               </div>
             </details>
 
@@ -766,7 +766,7 @@ function guideHTML(origin: string) {
               </summary>
               <div style="padding: 1rem; border-top: 1px solid ${colors.border}; font-size: 0.875rem; color: ${colors.textSecondary}; line-height: 1.625; background-color: rgba(250, 250, 249, 0.5);">
                 Windows PowerShell やコマンドプロンプトでは、環境変数の設定方法が異なります。<code class="code-inline">cross-env</code> パッケージを使用してコマンドを実行してください：
-                <code style="display: block; background-color: ${colors.codeBg}; color: ${colors.codeFg}; border-radius: 0.25rem; padding: 0.5rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; margin-top: 0.5rem;">npx cross-env CCCLUB_API_URL=${origin} npx ccclub init</code>
+                <code style="display: block; background-color: ${colors.codeBg}; color: ${colors.codeFg}; border-radius: 0.25rem; padding: 0.5rem; font-family: SF Mono, Fira Code, Menlo, Consolas, monospace !important; font-size: 0.75rem; margin-top: 0.5rem;">npx cross-env CCCLUB_API_URL=${origin} npx atologs init</code>
               </div>
             </details>
 

@@ -14,7 +14,7 @@
 import { Hono } from "hono";
 import { html, raw } from "hono/html";
 import type { Env } from "./types.js";
-import type { AgentSource, GroupRecord, UsageData } from "@ccclub/shared";
+import type { AgentSource, GroupRecord, UsageData } from "@atologs/shared";
 import { cachedPngResponse, getColor, hashCode, htmlEsc, latinOnly, ogCacheUrl, renderToPng, sanitizeCode, svgEsc, truncate } from "./og-utils.js";
 import { renderLayout, renderFeedbackCta } from "./components/layout.js";
 import { colors, fontSize, spacing, radius, shadow } from "./design-tokens.js";
@@ -936,7 +936,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
             <span>これはデモデータです（演示数据）</span>
           </div>
           <div style="color: ${colors.textSecondary}; font-size: ${fontSize.base}; line-height: 1.6;">
-            実際の記録は <code style="background: ${colors.bgMuted}; padding: 2px 4px; border-radius: ${radius.sm}; border: 1px solid ${colors.border}; font-size: ${fontSize.xs}; color: ${colors.textPrimary}; font-weight: 500;">ccclub init</code> で開始できます。<br>
+            実際の記録は <code style="background: ${colors.bgMuted}; padding: 2px 4px; border-radius: ${radius.sm}; border: 1px solid ${colors.border}; font-size: ${fontSize.xs}; color: ${colors.textPrimary}; font-weight: 500;">atologs init</code> で開始できます。<br>
             詳細は <a href="/guide" style="color: ${colors.accent}; font-weight: 600; text-decoration: underline; transition: color 0.15s;" onmouseover="this.style.color='${colors.accentDark}'" onmouseout="this.style.color='${colors.accent}'">使い方（使用指南）</a> をご覧ください。
           </div>
         </div>
@@ -1149,11 +1149,11 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
     }
 
     var inviteEl = document.getElementById("invite-code-display");
-    if (inviteEl) inviteEl.textContent = "npx cross-env CCCLUB_API_URL=" + window.location.origin + " npx ccclub join " + CODE;
+    if (inviteEl) inviteEl.textContent = "npx cross-env CCCLUB_API_URL=" + window.location.origin + " npx atologs join " + CODE;
     var copyBtn = document.getElementById("copy-btn");
     if (copyBtn) {
       copyBtn.addEventListener("click", function() {
-        navigator.clipboard.writeText("npx cross-env CCCLUB_API_URL=" + window.location.origin + " npx ccclub join " + CODE);
+        navigator.clipboard.writeText("npx cross-env CCCLUB_API_URL=" + window.location.origin + " npx atologs join " + CODE);
         this.textContent = "コピーしました！";
         var btn = this;
         setTimeout(function() { btn.textContent = "コピー"; }, 2000);
@@ -1371,7 +1371,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
       
       var inviteCodeDisplay = document.getElementById("invite-code-display");
       if (inviteCodeDisplay) {
-        inviteCodeDisplay.textContent = 'npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx ccclub join ' + CODE;
+        inviteCodeDisplay.textContent = 'npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx atologs join ' + CODE;
       }
     }
 
@@ -1414,7 +1414,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
             if (IS_GLOBAL) {
               document.getElementById("stat-grid").innerHTML = "";
               document.getElementById("content").innerHTML =
-                '<div class="empty">公開ユーザーはまだいません。<br>次のコマンドでプロフィールを公開できます: <code class="mono">npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx ccclub profile --public</code></div>';
+                '<div class="empty">公開ユーザーはまだいません。<br>次のコマンドでプロフィールを公開できます: <code class="mono">npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx atologs profile --public</code></div>';
             } else {
               var hasToken = !!userToken;
               if (!hasToken && CODE !== "888888" && CODE !== "88888" && CODE !== "SAMPLE") {
@@ -1443,7 +1443,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
                   '</div>';
                 document.getElementById("stat-grid").innerHTML = statHTML;
 
-                var loginCmd = 'npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx ccclub';
+                var loginCmd = 'npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx atologs';
                 document.getElementById("content").innerHTML =
                   '<div class="empty-state-card" style="padding: 48px 24px; text-align: center; background: var(--bg); border: 1px dashed var(--line); border-radius: 12px; margin-top: 16px;">' +
                     '<div style="font-size: 36px; margin-bottom: 16px;">🔒</div>' +
@@ -1491,7 +1491,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
                   '</div>';
                 document.getElementById("stat-grid").innerHTML = statHTML;
 
-                var syncCmd = 'npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx ccclub sync';
+                var syncCmd = 'npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx atologs sync';
                 document.getElementById("content").innerHTML =
                   '<div class="empty-state-card" style="padding: 48px 24px; text-align: center; background: var(--bg); border: 1px dashed var(--line); border-radius: 12px; margin-top: 16px;">' +
                     '<div style="font-size: 36px; margin-bottom: 16px;">📊</div>' +
@@ -2141,7 +2141,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
           codeBlock.textContent = JSON.stringify(data, null, 2);
         })
         .catch(function(err) {
-          codeBlock.textContent = "データの取得に失敗しました。同期履歴がまだ無いか、セッションが切れている可能性があります。\\n\\n詳細: " + err.message + "\\n\\nローカルで以下のコマンドを実行してデータを確認することもできます：\\nCCCLUB_API_URL=" + window.location.origin + " npx ccclub show-data";
+          codeBlock.textContent = "データの取得に失敗しました。同期履歴がまだ無いか、セッションが切れている可能性があります。\\n\\n詳細: " + err.message + "\\n\\nローカルで以下のコマンドを実行してデータを確認することもできます：\\nCCCLUB_API_URL=" + window.location.origin + " npx atologs show-data";
         });
       });
     }

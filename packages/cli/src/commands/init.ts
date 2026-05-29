@@ -92,11 +92,16 @@ export async function initCommand(): Promise<void> {
       console.log(chalk.dim('  ヒント: クロード以外のエージェント使用状況を更新するには "ccclub sync" を手動で実行してください'));
     }
     console.log("");
+    console.log(chalk.bold("  あなた専用ダッシュボード（このリンクで自動ログイン）:"));
+    console.log("");
+    console.log(`    ${theme.link(`${apiUrl}/g/${data.groupCode}?token=${token}`)}`);
+    console.log(chalk.dim("    ※ このリンクから公開／非公開を自分で切り替えられます"));
+    console.log("");
     console.log(chalk.bold("  友達を招待して競い合いましょう:"));
     console.log("");
     console.log(`    ${theme.link(`${apiUrl}/invite/${data.groupCode}`)}`);
     console.log("");
-    console.log(chalk.dim(`    または: npx ccclub join ${data.groupCode}`));
+    console.log(chalk.dim(`    または: npx atologs join ${data.groupCode}`));
 
     // First sync
     console.log("");
