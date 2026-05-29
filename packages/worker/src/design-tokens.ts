@@ -117,7 +117,7 @@ export const containers = {
 
 // 版本号（footer 显示用）
 export const VERSION = {
-  app: 'v1.1.0',
+  app: 'v1.1.1',
   cli: 'v0.3.15',
 } as const;
 

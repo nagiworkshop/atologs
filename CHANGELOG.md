@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.1.1] - 2026-05-30
+
+### Changed
+- Clearer login guidance for the sharing toggle: dashboard prompt and guide now point users to the auto-login link from `npx atologs init`, instead of the misleading "paste token from config.json".
+
 ## [v1.1.0] - 2026-05-30
 
 ### Added

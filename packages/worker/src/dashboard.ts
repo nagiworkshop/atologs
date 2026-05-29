@@ -2085,7 +2085,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
     if (toggleBtn) {
       toggleBtn.addEventListener("click", function() {
         if (!userToken) {
-          var t = window.prompt("公開設定を切り替えるにはログインが必要です。npx atologs init で表示されるログインリンクを開くか、~/.ccclub/config.json 内の token を貼り付けてください：");
+          var t = window.prompt("公開／非公開の切り替えにはログインが必要です。\n\n【かんたん】ターミナルで「npx atologs init」を実行すると、自動ログイン用のリンクが表示されます。そのリンクを開くだけでログインできます。\n\n【上級者向け】すでにログイントークンをお持ちの場合は、ここに貼り付けてもログインできます：");
           if (t && t.trim()) {
             localStorage.setItem("atologs_user_token", t.trim());
             location.reload();

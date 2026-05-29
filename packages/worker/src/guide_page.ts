@@ -552,7 +552,7 @@ function guideHTML(origin: string) {
               <span style="font-size: 0.75rem; font-weight: 600; color: ${colors.textFaint};">04 / SHARING BANNER</span>
               <h4 style="font-weight: 700; color: ${colors.textSecondary}; margin: 0; font-size: 1rem;">活用ログ共有切り替え</h4>
               <p style="font-size: 0.75rem; color: ${colors.textSecondary}; line-height: 1.625; margin: 0;">
-                ダッシュボードからワンクリックで、自分がグループ内のランキングに参加するか、一時的に非表示にするかを切り替えることができます。
+                自分のデータをグローバル活用ログ（公開ランキング）に載せる／外すをワンクリックで切り替えられます。<strong>切り替えには本人のログインが必要</strong>です。ターミナルで <code style="background:${colors.bgWhite};padding:1px 4px;border-radius:3px;">npx atologs init</code> を実行し、表示される「自動ログイン用リンク」を開いてください（コマンド派は <code style="background:${colors.bgWhite};padding:1px 4px;border-radius:3px;">atologs profile --public</code> / <code style="background:${colors.bgWhite};padding:1px 4px;border-radius:3px;">--private</code> でも可）。
               </p>
             </div>
           </div>
