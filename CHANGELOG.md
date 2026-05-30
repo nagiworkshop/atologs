@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.1.3] - 2026-05-30
+
+### Changed
+- Sharing toggle login: clicking the toggle while logged out now shows a one-click-copy command (run once in a terminal to authorize the browser), replacing the manual token-paste prompt.
+
 ## [v1.1.1] - 2026-05-30
 
 ### Changed

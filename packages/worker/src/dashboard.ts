@@ -2082,14 +2082,46 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
       });
     }
 
+    function showAuthCmdModal() {
+      if (document.getElementById("auth-cmd-modal")) return;
+      var loginUrl = location.origin + location.pathname;
+      var inner = "const c=require(require('os').homedir()+'/.ccclub/config.json'),u='" + loginUrl + "?token='+c.token,o=process.platform=='darwin'?'open':'xdg-open';require('child_process').exec(o+' '+JSON.stringify(u))";
+      var cmd = "node -e " + JSON.stringify(inner);
+      var ov = document.createElement("div");
+      ov.id = "auth-cmd-modal";
+      ov.setAttribute("style", "position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;padding:20px;");
+      ov.innerHTML = '<div style="background:var(--card-bg,#fff);color:var(--text,#1a1a1a);max-width:520px;width:100%;border-radius:16px;padding:24px;box-shadow:0 12px 40px rgba(0,0,0,0.25);">'
+        + '<div style="font-size:17px;font-weight:700;margin-bottom:8px;">公開設定を使うには認証が必要です</div>'
+        + '<div style="font-size:13px;line-height:1.7;opacity:0.75;margin-bottom:14px;">下のコマンドをコピーして、ターミナルで1回だけ実行してください。ブラウザが自動で開いて認証が完了し、この画面も自動で切り替わります。</div>'
+        + '<pre id="auth-cmd-box" style="background:#0d1117;color:#e6edf3;font-size:12px;line-height:1.6;padding:14px;border-radius:10px;overflow-x:auto;white-space:pre-wrap;word-break:break-all;margin:0 0 12px;"></pre>'
+        + '<div style="display:flex;gap:10px;">'
+        + '<button id="auth-cmd-copy" style="flex:1;background:#4f46e5;color:#fff;border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:600;cursor:pointer;">コマンドをコピー</button>'
+        + '<button id="auth-cmd-close" style="background:transparent;color:inherit;border:1px solid rgba(127,127,127,0.4);border-radius:10px;padding:11px 16px;font-size:14px;cursor:pointer;">閉じる</button>'
+        + '</div>'
+        + '<div style="font-size:11px;opacity:0.6;margin-top:12px;line-height:1.6;">※ まだ atologs を使ったことがない方は、先に <code style="background:rgba(127,127,127,0.18);padding:1px 5px;border-radius:4px;">npx atologs init</code> を実行してください。</div>'
+        + '</div>';
+      document.body.appendChild(ov);
+      document.getElementById("auth-cmd-box").textContent = cmd;
+      var copyBtn = document.getElementById("auth-cmd-copy");
+      copyBtn.addEventListener("click", function() {
+        navigator.clipboard.writeText(cmd).then(function() {
+          copyBtn.textContent = "コピーしました ✓";
+          copyBtn.style.background = "#16a34a";
+        }).catch(function() {
+          copyBtn.textContent = "コピー失敗（手動で選択してください）";
+        });
+      });
+      document.getElementById("auth-cmd-close").addEventListener("click", function() { ov.remove(); });
+      ov.addEventListener("click", function(e) { if (e.target === ov) ov.remove(); });
+      window.addEventListener("storage", function(e) {
+        if (e.key === "atologs_user_token" && e.newValue) location.reload();
+      });
+    }
+
     if (toggleBtn) {
       toggleBtn.addEventListener("click", function() {
         if (!userToken) {
-          var t = window.prompt("公開／非公開の切り替えにはログインが必要です。ターミナルで「npx atologs init」を実行すると自動ログイン用リンクが表示されます。それを開いてください（ログイントークンをお持ちの方は、ここに貼り付けてもOK）：");
-          if (t && t.trim()) {
-            localStorage.setItem("atologs_user_token", t.trim());
-            location.reload();
-          }
+          showAuthCmdModal();
           return;
         }
         toggleBtn.disabled = true;
