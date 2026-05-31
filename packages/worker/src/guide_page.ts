@@ -552,7 +552,7 @@ function guideHTML(origin: string) {
               <span style="font-size: 0.75rem; font-weight: 600; color: ${colors.textFaint};">04 / SHARING BANNER</span>
               <h4 style="font-weight: 700; color: ${colors.textSecondary}; margin: 0; font-size: 1rem;">活用ログ共有切り替え</h4>
               <p style="font-size: 0.75rem; color: ${colors.textSecondary}; line-height: 1.625; margin: 0;">
-                自分のデータをグローバル活用ログ（公開ランキング）に載せる／外すをワンクリックで切り替えられます。<strong>切り替えには本人のログインが必要</strong>です。ターミナルで <code style="background:${colors.bgWhite};padding:1px 4px;border-radius:3px;">npx atologs init</code> を実行し、表示される「自動ログイン用リンク」を開いてください（コマンド派は <code style="background:${colors.bgWhite};padding:1px 4px;border-radius:3px;">atologs profile --public</code> / <code style="background:${colors.bgWhite};padding:1px 4px;border-radius:3px;">--private</code> でも可）。
+                自分のデータをグローバル活用ログ（公開ランキング）に載せる／外すを切り替えます。<strong>新規ユーザーはデフォルトで非公開</strong>（自分から公開を選ぶ opt-in 方式）です。<br><br><strong>一番かんたんはターミナル</strong>（ブラウザ不要・すぐ反映）：<br>・現在の状態を確認 <code style="background:${colors.bgWhite};padding:1px 4px;border-radius:3px;">npx atologs profile</code><br>・公開にする <code style="background:${colors.bgWhite};padding:1px 4px;border-radius:3px;">npx atologs profile --public</code><br>・非公開にする <code style="background:${colors.bgWhite};padding:1px 4px;border-radius:3px;">npx atologs profile --private</code>
               </p>
             </div>
           </div>
@@ -560,6 +560,11 @@ function guideHTML(origin: string) {
           <div style="background-color: ${colors.bgMuted}; border-left: 3px solid ${colors.border}; padding: 12px 16px; margin: 16px 0; font-size: 14px; color: ${colors.textSecondary}; line-height: 1.6;">
             ※ ブラウザからも閲覧可能：<br>
             <code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">https://atologs.com/g/&lt;6 桁コード&gt;</code> をブラウザで開くだけ。ログインは不要で、コードを知っている人なら誰でもアクセスできます（22 億通りの組み合わせによる "Security by Obscurity"）。
+          </div>
+
+          <div style="background-color: ${colors.bgMuted}; border-left: 3px solid ${colors.border}; padding: 12px 16px; margin: 16px 0; font-size: 14px; color: ${colors.textSecondary}; line-height: 1.6;">
+            ※ ブラウザの開関で切り替えたい場合（備考）：<br>
+            ダッシュボードの「公開設定」開関でも切り替えできますが、<strong>本人のログインが必要</strong>で、ログイン状態は<strong>ブラウザごと</strong>に保存されます。別のブラウザやシークレットウィンドウでは「タップしてログイン」と表示されますが、これは正常です（新規ユーザーは <code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">npx atologs init</code> で表示されるログインリンクをそのブラウザで開けばログインできます）。<strong>手間を避けたいなら、上のターミナルコマンド（<code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">atologs profile --public</code> / <code style="background: ${colors.bgWhite}; padding: 2px 6px; border-radius: 4px; font-family: SF Mono, Menlo, monospace; font-size: 13px;">--private</code>）が確実です。ログインリンクは認証情報を含むため、他人に共有しないでください。</strong>
           </div>
         </section>
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## [v1.1.4] - 2026-05-31
+
+### Changed
+- Guide: sharing-toggle section now leads with terminal commands (atologs profile --public / --private, no browser needed); browser toggle + per-browser login explained as secondary.
+
 ## [v1.1.3] - 2026-05-30
 
 ### Changed
