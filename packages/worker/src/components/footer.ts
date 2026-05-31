@@ -15,7 +15,7 @@ export function renderFooter(): string {
         <span>·</span>
         <a href="/messages">みんなのメッセージ</a>
       </div>
-      <div>AtoLogs ${VERSION.app} · CLI ${VERSION.cli} (<a href="https://github.com/nagiworkshop/atologs/releases" target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">Releases</a>) · MIT License</div>
+      <div>AtoLogs ${VERSION.app} · MIT License</div>
       <div style="margin-top: ${spacing[1]}; opacity: 0.7;">Made with care by Nagi</div>
     </div>
   </footer>`;
