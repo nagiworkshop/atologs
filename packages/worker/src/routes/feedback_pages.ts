@@ -719,6 +719,7 @@ app.get("/messages", (c) => {
         }
         form.style.display = 'none';
         success.style.display = 'block';
+        if (typeof window.track === 'function') window.track('feedback_submit', { has_nickname: !!nickname });
         loadMessages(); // 重新加载公开面板列表（注意：刚提交是 pending 状态，列表需要刷新）
       } catch (err) {
         formError.textContent = err.message;

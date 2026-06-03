@@ -1153,6 +1153,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
     if (copyBtn) {
       copyBtn.addEventListener("click", function() {
         navigator.clipboard.writeText("npx cross-env CCCLUB_API_URL=" + window.location.origin + " npx atologs join " + CODE);
+        if (typeof window.track === 'function') window.track('copy_share_link', { code: CODE });
         this.textContent = "コピーしました！";
         var btn = this;
         setTimeout(function() { btn.textContent = "コピー"; }, 2000);
@@ -1310,6 +1311,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
         document.querySelectorAll(".periods button").forEach(function(b) { b.classList.remove("active"); });
         btn.classList.add("active");
         period = btn.dataset.period;
+        if (typeof window.track === 'function') window.track('period_change', { period: period });
         load();
         loadChart();
       });
