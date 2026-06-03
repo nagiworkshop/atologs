@@ -33,7 +33,7 @@ export interface LayoutOptions {
  * "Website tag" (Universal Website Tag) → copy the short pixel ID (e.g. "rC3xs").
  * Empty string = pixel not rendered (safe default until the tag exists).
  */
-const X_PIXEL_ID = "";
+const X_PIXEL_ID = "rclwf";
 
 export function renderLayout(opts: LayoutOptions): string {
   const description = opts.description ||
