@@ -12,6 +12,7 @@ import { inviteRoute } from "./invite.js";
 import { guideRoute } from "./guide.js";
 import { guidePage } from "./guide_page.js";
 import { feedbackPages } from "./routes/feedback_pages.js";
+import { sendMpEvents, gaClientIdFromRequest, isLikelyBot } from "./ga-mp.js";
 
 
 const app = new Hono<{ Bindings: Env }>();
@@ -25,6 +26,35 @@ app.use("*", async (c, next) => {
   c.header("X-Content-Type-Options", "nosniff");
   c.header("Referrer-Policy", "strict-origin-when-cross-origin");
   c.header("Permissions-Policy", "geolocation=(), microphone=(), camera=(), interest-cohort=()");
+});
+
+// Server-side GA4 Measurement Protocol page_view — anti-tracking-prevention fallback.
+// Fires from the edge (non-blocking) for real HTML navigations only. Dormant until
+// GA4_MP_API_SECRET is set. Reuses the browser's _ga client_id so it dedupes with the
+// client-side gtag hit; skips when no _ga cookie exists yet (avoids phantom users).
+app.use("*", async (c, next) => {
+  const path = c.req.path;
+  const isPage =
+    c.req.method === "GET" &&
+    !path.startsWith("/api/") &&
+    (c.req.header("Accept") || "").includes("text/html") &&
+    !/\.(png|svg|ico|xml|txt|json|webmanifest|css|js|map|ttf|woff2?|jpe?g|gif|webp)$/.test(path);
+  if (isPage) {
+    const ua = c.req.header("User-Agent") || "";
+    const clientId = gaClientIdFromRequest(c.req.raw);
+    if (clientId && !isLikelyBot(ua)) {
+      try {
+        c.executionCtx.waitUntil(
+          sendMpEvents(c.env, clientId, [
+            { name: "page_view", params: { page_location: c.req.url, ssrc: "worker" } },
+          ]),
+        );
+      } catch {
+        // executionCtx unavailable (non-Worker context) — skip silently
+      }
+    }
+  }
+  await next();
 });
 
 // E5: Validate API routes before CORS matching

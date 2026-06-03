@@ -529,11 +529,8 @@ function landingHTML(origin: string) {
         setTimeout(function() {
           copyFeedback.style.opacity = '0';
         }, 1800);
-        if (typeof gtag === 'function') {
-          gtag('event', 'install_command_copy', {
-            mode: currentMode,
-            location: 'landing_hero'
-          });
+        if (typeof window.track === 'function') {
+          window.track('install_command_copy', { mode: currentMode, location: 'landing_hero' });
         }
       });
     });

@@ -2107,6 +2107,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
         navigator.clipboard.writeText(cmd).then(function() {
           copyBtn.textContent = "コピーしました ✓";
           copyBtn.style.background = "#16a34a";
+          if (typeof window.track === 'function') window.track('auth_command_copy', { location: 'dashboard_sharing' });
         }).catch(function() {
           copyBtn.textContent = "コピー失敗（手動で選択してください）";
         });
@@ -2143,6 +2144,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
         })
         .then(function(profile) {
           updateSharingUI(profile.visibility);
+          if (typeof window.track === 'function') window.track('share_toggle', { to: profile.visibility });
           load();
         })
         .catch(function(err) {

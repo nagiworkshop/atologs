@@ -1,5 +1,6 @@
 import type { Context } from "hono";
 import type { Env } from "../types.js";
+import { sendMpEvents, gaClientIdForUser } from "../ga-mp.js";
 
 export async function usageRoute(c: Context<{ Bindings: Env }>) {
   const auth = c.req.header("Authorization") ?? "";
@@ -27,7 +28,21 @@ export async function usageRoute(c: Context<{ Bindings: Env }>) {
   };
 
   const existing = (await c.env.KV.get<object>(`usage:${user.userId}`, "json")) ?? {};
+  const isFirstSync = Object.keys(existing).length === 0;
   await c.env.KV.put(`usage:${user.userId}`, JSON.stringify({ ...existing, usageSnapshot: snap }));
+
+  // Server-side conversion: a user's very first successful sync = real activation.
+  // The browser never sees this CLI→API call, so it can only be tracked from the edge.
+  // Dormant until GA4_MP_API_SECRET is set.
+  if (isFirstSync) {
+    try {
+      c.executionCtx.waitUntil(
+        sendMpEvents(c.env, gaClientIdForUser(user.userId), [{ name: "first_sync", params: { source: "cli" } }], user.userId),
+      );
+    } catch {
+      // executionCtx unavailable — skip silently
+    }
+  }
 
   // Invalidate rank cache so next fetch sees updated usage
   const groups = (await c.env.KV.get<string[]>(`user_groups:${user.userId}`, "json")) ?? [];

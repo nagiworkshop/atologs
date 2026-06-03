@@ -28,6 +28,13 @@ export interface LayoutOptions {
  * 单一页面骨架渲染函数。
  * 所有页面必须通过这个函数渲染，不许自己写 <html><body> 骨架。
  */
+/**
+ * X (Twitter) Ads pixel ID. Create in X Ads Manager → Tools → Conversion tracking →
+ * "Website tag" (Universal Website Tag) → copy the short pixel ID (e.g. "rC3xs").
+ * Empty string = pixel not rendered (safe default until the tag exists).
+ */
+const X_PIXEL_ID = "";
+
 export function renderLayout(opts: LayoutOptions): string {
   const description = opts.description ||
     'Claude Code などのコーディングエージェント利用量・推定コスト・セッション数を記録する個人・チーム向けツール。';
@@ -78,7 +85,13 @@ export function renderLayout(opts: LayoutOptions): string {
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-EVZ3ZQNZD5');
+    window.track = function(name, params){ try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {} };
   </script>
+  ${X_PIXEL_ID ? `<!-- X (Twitter) Ads pixel -->
+  <script>
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    twq('config','${X_PIXEL_ID}');
+  </script>` : ''}
 
   <style>
     /* === 全局 reset === */
