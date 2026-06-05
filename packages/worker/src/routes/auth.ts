@@ -264,8 +264,9 @@ app.post("/profile", async (c) => {
     }
   }
 
-  // Manage public_users list
-  if (body.visibility !== undefined && body.visibility !== oldVisibility) {
+  // Manage public_users list — reconcile on every profile update (idempotent; self-heals the
+  // desync where user.visibility=public but userId fell out of public_users, e.g. after a purge).
+  if (body.visibility !== undefined) {
     const publicUsers = (await c.env.KV.get<string[]>("public_users", "json")) || [];
     if (body.visibility === "public" && !publicUsers.includes(user.userId)) {
       publicUsers.push(user.userId);

@@ -1034,7 +1034,7 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
     const IS_GLOBAL = ${isGlobal ? "true" : "false"};
     const GROUP_NAME = ${raw(JSON.stringify(groupName || ""))};
     const MEMBER_COUNT = ${memberCount || 0};
-    let period = "daily";
+    let period = IS_GLOBAL ? "all-time" : "daily";
     let showCache = false;
     let viewMode = "rank";
     const ACTIVE_THRESHOLD_MS = 15 * 60 * 1000;
@@ -1317,6 +1317,13 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
       });
     });
 
+    // 全球榜默认看「全期間」（global 的「今日」常常是空的，会让人误以为坏了）
+    if (IS_GLOBAL) {
+      document.querySelectorAll(".periods button").forEach(function(b) { b.classList.remove("active"); });
+      var gDefBtn = document.querySelector('.periods button[data-period="all-time"]');
+      if (gDefBtn) gDefBtn.classList.add("active");
+    }
+
     function renderEmptyDashboard() {
       document.getElementById("title").textContent = GROUP_NAME || "ダッシュボード";
       document.getElementById("date-range").textContent =
@@ -1411,8 +1418,19 @@ export function dashboardHTML(code: string, groupName: string, memberCount: numb
           if (data.rankings.length === 0) {
             if (IS_GLOBAL) {
               document.getElementById("stat-grid").innerHTML = "";
-              document.getElementById("content").innerHTML =
-                '<div class="empty">公開ユーザーはまだいません。<br>次のコマンドでプロフィールを公開できます: <code class="mono">npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx atologs profile --public</code></div>';
+              var gEmptyMsg;
+              if (data.group && data.group.memberCount > 0) {
+                if (period === 'daily') {
+                  gEmptyMsg = '今日はまだ誰も活動していません。<br>「全期間」「30日間」タブで記録を確認できます。';
+                } else if (period === 'all-time') {
+                  gEmptyMsg = 'まだ活動データがありません。';
+                } else {
+                  gEmptyMsg = 'この期間はまだ活動がありません。<br>「全期間」タブで記録を確認できます。';
+                }
+              } else {
+                gEmptyMsg = '公開ユーザーはまだいません。<br>次のコマンドでプロフィールを公開できます: <code class="mono">npx cross-env CCCLUB_API_URL=' + window.location.origin + ' npx atologs profile --public</code>';
+              }
+              document.getElementById("content").innerHTML = '<div class="empty">' + gEmptyMsg + '</div>';
             } else {
               var hasToken = !!userToken;
               if (!hasToken && CODE !== "888888" && CODE !== "88888" && CODE !== "SAMPLE") {
