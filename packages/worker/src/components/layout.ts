@@ -35,6 +35,13 @@ export interface LayoutOptions {
  */
 const X_PIXEL_ID = "rclwf";
 
+/**
+ * Microsoft Clarity project ID (heatmaps + session recordings).
+ * From the Clarity dashboard URL clarity.microsoft.com/projects/view/<ID>/...
+ * → here <ID> = "x5e5utneeu". Empty string = not rendered (safe default).
+ */
+const CLARITY_ID = "x5e5utneeu";
+
 export function renderLayout(opts: LayoutOptions): string {
   const description = opts.description ||
     'Claude Code などのコーディングエージェント利用量・推定コスト・セッション数を記録する個人・チーム向けツール。';
@@ -91,6 +98,10 @@ export function renderLayout(opts: LayoutOptions): string {
   <script>
     !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
     twq('config','${X_PIXEL_ID}');
+  </script>` : ''}
+  ${CLARITY_ID ? `<!-- Microsoft Clarity -->
+  <script>
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","${CLARITY_ID}");
   </script>` : ''}
 
   <style>
